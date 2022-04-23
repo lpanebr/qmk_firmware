@@ -15,7 +15,33 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+/*
+rules:      evdev
+model:      pc105
+layout:     br
+
+  KEYCODE = output(shift output)
+  KC_TILD = '(")
+  KC_SLSH = ;(:)
+  KC_GRV  = '"
+  KC_QUOT = dead ~(^) => ã(â)
+
+
+rules:      evdev
+model:      pc105
+layout:     us
+variant:    intl
+
+  KEYCODE = output(shift output)
+  KC_TILD = dead `(~) => à(ã) followed by spc the same
+  KC_SLSH = /(?)
+  KC_GRV  = dead `(~) => à(ã)
+  KC_QUOT = dead ´(¨) => á(ä) followed by spc '(")
+
+*/
+
 #include QMK_KEYBOARD_H
+#include "keymap_br_abnt2.h"
 
 enum layer_number {
   _BASE,
@@ -27,16 +53,16 @@ enum layer_number {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_BASE] =  LAYOUT(
-        KC_Q,         KC_W,    KC_E,    KC_R,    KC_T,                                                 KC_Y,             KC_U,    KC_I,    KC_O,    KC_P,
-        KC_A,         KC_S,    KC_D,    KC_F,    KC_G,                                                 KC_H,             KC_J,    KC_K,    KC_L,    KC_SCLN,
-        LSFT_T(KC_Z), KC_X,    KC_C,    KC_V,    KC_B,                                                 KC_N,             KC_M,    KC_COMM, KC_DOT,  RSFT_T(KC_SLSH),
-                                                 KC_MUTE,                                              TG(_ADJ),
-                                        KC_LCTL, LALT_T(KC_BSPC), LT(_MUS,KC_SPC),    LT(_NUM,KC_DEL), LT(_SYMB,KC_ENT), KC_CAPS
+        KC_Q,                 KC_W,             KC_E,            KC_R,            KC_T,                                                 KC_Y,             KC_U,            KC_I,            KC_O,            KC_P,
+        LGUI_T(KC_A),         LALT_T(KC_S),     LCTL_T(KC_D),    LSFT_T(KC_F),    KC_G,                                                 KC_H,             RSFT_T(KC_J),    LCTL_T(KC_K),    RALT_T(KC_L),    RGUI_T(KC_TILD),
+        LSFT_T(KC_Z),         KC_X,             KC_C,            KC_V,            KC_B,                                                 KC_N,             KC_M,            KC_COMM,         KC_DOT,          KC_SLSH,
+                                                                                  KC_MUTE,                                              TG(_ADJ),
+                                                                 KC_BSPC,         LALT_T(KC_BSPC), LT(_MUS,KC_SPC),    LT(_NUM,KC_DEL), LT(_SYMB,KC_ENT), KC_CAPS
     ),
     [_NUM] = LAYOUT(
-        KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                         KC_6,    KC_7,    KC_8,    KC_9,    KC_0,
-        KC_TAB,  XXXXXXX, KC_VOLD, KC_VOLU, XXXXXXX,                      KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, KC_QUOT,
-        KC_LSFT, XXXXXXX, XXXXXXX, KC_MUTE, RESET,                        KC_HOME, KC_END,  KC_PGUP, KC_PGDN, KC_RSFT,
+        KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                         KC_GRV,    KC_7,    KC_8,    KC_9,    KC_MINS,
+        KC_TAB,  XXXXXXX, KC_VOLD, KC_VOLU, XXXXXXX,                      KC_QUOT, KC_4,    KC_5,    KC_6, KC_PLUS,
+        KC_LSFT, XXXXXXX, XXXXXXX, KC_MUTE, RESET,                        KC_0, KC_1,    KC_2,    KC_3, KC_COMM,
                                             XXXXXXX,                      KC_NO,
                                    XXXXXXX, KC_LALT, XXXXXXX,    _______, KC_ENT,  KC_NO
     ),
