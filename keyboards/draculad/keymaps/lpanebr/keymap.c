@@ -15,49 +15,39 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-/*
-rules:      evdev
-model:      pc105
-layout:     br
-
-  KEYCODE = output(shift output)
-  KC_TILD = '(")
-  KC_SLSH = ;(:)
-  KC_GRV  = '"
-  KC_QUOT = dead ~(^) => ã(â)
-
-
-rules:      evdev
-model:      pc105
-layout:     us
-variant:    intl
-
-  KEYCODE = output(shift output)
-  KC_TILD = dead `(~) => à(ã) followed by spc the same
-  KC_SLSH = /(?)
-  KC_GRV  = dead `(~) => à(ã)
-  KC_QUOT = dead ´(¨) => á(ä) followed by spc '(")
-
-*/
-
 #include QMK_KEYBOARD_H
 #include "keymap_br_abnt2.h"
 
 enum layer_number {
   _BASE,
   _NUM,
-  _SYMB,
+  _FUNC,
   _MUS,
+  _NAV,
   _ADJ
+};
+
+
+// Tap Dance declarations
+enum {
+    TD_ESC_CAPS,
+    TD_C_CEDIL,
+};
+
+// Tap Dance definitions
+qk_tap_dance_action_t tap_dance_actions[] = {
+    // Tap once for Escape, twice for Caps Lock
+    [TD_ESC_CAPS] = ACTION_TAP_DANCE_DOUBLE(KC_ESC, KC_CAPS),
+    [TD_C_CEDIL] = ACTION_TAP_DANCE_DOUBLE(KC_C, BR_CCED),
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_BASE] =  LAYOUT(
         KC_Q,                 KC_W,             KC_E,            KC_R,            KC_T,                                                 KC_Y,             KC_U,            KC_I,            KC_O,            KC_P,
-        LGUI_T(KC_A),         LALT_T(KC_S),     LCTL_T(KC_D),    LSFT_T(KC_F),    KC_G,                                                 KC_H,             RSFT_T(KC_J),    LCTL_T(KC_K),    RALT_T(KC_L),    RGUI_T(KC_TILD),
-        LSFT_T(KC_Z),         KC_X,             KC_C,            KC_V,            KC_B,                                                 KC_N,             KC_M,            KC_COMM,         KC_DOT,          KC_SLSH,
+        LGUI_T(KC_A),         LALT_T(KC_S),     LCTL_T(KC_D),    LSFT_T(KC_F),    KC_G,                                                 KC_H,             RSFT_T(KC_J),    LCTL_T(KC_K),    RALT_T(KC_L),    RGUI_T(BR_TILD),
+        LSFT_T(KC_Z),         KC_X,             TD(TD_C_CEDIL),  KC_V,            KC_B,                                                 KC_N,             KC_M,            KC_COMM,         KC_DOT,          KC_SLSH,
                                                                                   KC_MUTE,                                              TG(_ADJ),
-                                                                 KC_BSPC,         LALT_T(KC_BSPC), LT(_MUS,KC_SPC),    LT(_NUM,KC_DEL), LT(_SYMB,KC_ENT), KC_CAPS
+                                                                 KC_BSPC,         LALT_T(KC_BSPC), LT(_MUS,KC_SPC),    LT(_NUM,KC_DEL), LT(_FUNC,KC_ENT), KC_CAPS
     ),
     [_NUM] = LAYOUT(
         KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                         KC_GRV,    KC_7,    KC_8,    KC_9,    KC_MINS,
@@ -66,12 +56,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                             XXXXXXX,                      KC_NO,
                                    XXXXXXX, KC_LALT, XXXXXXX,    _______, KC_ENT,  KC_NO
     ),
-    [_SYMB] = LAYOUT(
-        KC_ESC,  KC_F1,   KC_F2,   KC_F3,   KC_F4,                        XXXXXXX, XXXXXXX, XXXXXXX, KC_EQL,  KC_MINS,
-        XXXXXXX, KC_F5,   KC_F6,   KC_F7,   KC_F8,                        KC_LBRC, KC_RBRC, XXXXXXX, KC_GRV,  KC_BSLS,
-        KC_LSFT, KC_F9,   KC_F10,  KC_F11,  KC_F12,                       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_RSFT,
-                                            XXXXXXX,                      KC_NO,
+    [_FUNC] = LAYOUT(
+        KC_ESC,  KC_F1,   KC_F2,   KC_F3,   KC_F4,                       KC_F12,    KC_F7,    KC_F8,    KC_F9,    KC_INS, 
+        XXXXXXX, KC_F5,   KC_F6,   KC_F7,   KC_F8,                       KC_F11, KC_F4,    KC_F5,    KC_F6, XXXXXXX,      
+        KC_LSFT, KC_F9,   KC_F10,  KC_F11,  KC_F12,                      KC_F10, KC_F1,    KC_F2,    KC_F3, XXXXXXX,         
+                                            XXXXXXX,                     KC_NO,                                         
                                    KC_LALT, XXXXXXX, XXXXXXX,    XXXXXXX, _______, KC_NO
+    ),
+    [_NAV] = LAYOUT(
+        KC_LCTL, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+        KC_LALT, KC_BTN3, KC_BTN2, KC_BTN1, XXXXXXX,                      RGB_MOD,  RGB_HUI, RGB_SAI, RGB_VAI, RGB_TOG, 
+        KC_LSFT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      RGB_RMOD, RGB_HUD, RGB_SAD, RGB_VAD, _______, 
+                                            XXXXXXX,                      XXXXXXX,
+                                   XXXXXXX, XXXXXXX, XXXXXXX,    XXXXXXX, XXXXXXX, XXXXXXX
     ),
     [_MUS] = LAYOUT(
         KC_LCTL, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
@@ -197,8 +194,8 @@ static void render_status(void) {
         case _NUM:
             oled_write_P(PSTR("Numbers"), false);
             break;
-        case _SYMB:
-            oled_write_P(PSTR("Symbols"), false);
+        case _FUNC:
+            oled_write_P(PSTR("FunKeys"), false);
             break;
         case _ADJ:
             oled_write_P(PSTR("Adjust "), false);
