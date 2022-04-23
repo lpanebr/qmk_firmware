@@ -47,7 +47,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         LGUI_T(KC_A),         LALT_T(KC_S),     LCTL_T(KC_D),    LSFT_T(KC_F),    KC_G,                                                 KC_H,             RSFT_T(KC_J),    LCTL_T(KC_K),    RALT_T(KC_L),    RGUI_T(BR_TILD),
         LSFT_T(KC_Z),         KC_X,             TD(TD_C_CEDIL),  KC_V,            KC_B,                                                 KC_N,             KC_M,            KC_COMM,         KC_DOT,          KC_SLSH,
                                                                                   KC_MUTE,                                              TG(_ADJ),
-                                                                 KC_BSPC,         LALT_T(KC_BSPC), LT(_MUS,KC_SPC),    LT(_NUM,KC_DEL), LT(_FUNC,KC_ENT), KC_CAPS
+                                                                 KC_BSPC,         LT(_NAV,KC_BSPC), LT(_MUS,KC_SPC),    LT(_NUM,KC_DEL), LT(_FUNC,KC_ENT), KC_CAPS
     ),
     [_NUM] = LAYOUT(
         KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                         KC_GRV,    KC_7,    KC_8,    KC_9,    KC_MINS,
@@ -197,11 +197,14 @@ static void render_status(void) {
         case _FUNC:
             oled_write_P(PSTR("FunKeys"), false);
             break;
+        case _MUS:
+          oled_write_P(PSTR("Mouse  "), false);
+          break;
+        case _NAV:
+          oled_write_P(PSTR("Mouse  "), false);
+          break;
         case _ADJ:
             oled_write_P(PSTR("Adjust "), false);
-            break;
-        case _MUS:
-            oled_write_P(PSTR("Mouse  "), false);
             break;
         default:
             oled_write_P(PSTR("Unkn "), false);
