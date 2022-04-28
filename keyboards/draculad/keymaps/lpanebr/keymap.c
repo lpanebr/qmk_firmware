@@ -51,45 +51,45 @@ qk_tap_dance_action_t tap_dance_actions[] = {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_BASE] =  LAYOUT(
         TD(TD_Q_ESC), KC_W,          KC_E,            KC_R,         KC_T,                                          KC_Y,  KC_U,          KC_I,          KC_O,          KC_P,
-        LGUI_T(KC_A), LALT_T(KC_S),  LCTL_T(KC_D),    LSFT_T(KC_F), KC_G,                                          KC_H,  RSFT_T(KC_J),  LCTL_T(KC_K),  RALT_T(KC_L),  RGUI_T(BR_TILD),
+        LGUI_T(KC_A), LALT_T(KC_S),  LCTL_T(KC_D),    LSFT_T(KC_F), KC_G,                                          KC_H,  RSFT_T(KC_J),  RCTL_T(KC_K),  RALT_T(KC_L),  RGUI_T(BR_TILD),
         LSFT_T(KC_Z), LT(0,KC_X),    TD(TD_C_CEDIL),  LT(0,KC_V),   KC_B,                                          KC_N,  KC_M,          KC_COMM,       KC_DOT,        LT(0,BR_SLSH),
                                                                     KC_NO,                                         KC_NO,
-                                                      LT(_ADJ,KC_BSPC),      LT(_NAV,KC_SPC), LT(_MUS,KC_TAB),      KC_ENT, LT(_NUM,KC_SPC), LT(_FUNC,KC_DEL)
+                        LT(_ADJ,KC_BSPC), LT(_NAV,KC_SPC), LT(_MUS,KC_TAB),                                        KC_ENT, LT(_NUM,KC_SPC), LT(_FUNC,KC_DEL)
     ),
     [_NUM] = LAYOUT(
-        TD(TD_QTS),      BR_LCBR,         BR_LBRC,         BR_LPRN,         BR_EXLM,                                BR_GRV,  KC_7,         KC_8,         KC_9,         KC_MINS,
-        LGUI_T(BR_SLSH), LALT_T(BR_ASTR), LCTL_T(BR_MINS), LSFT_T(BR_PLUS), BR_EQL,                                 BR_ACUT, RSFT_T(KC_4), RCTL_T(KC_5), RALT_T(KC_6), RGUI_T(KC_PLUS),
-        BR_BSLS,         BR_RCBR,         BR_RBRC,         BR_RPRN,         BR_AMPR,                                KC_0,    KC_1,         TD(TD_2_C),   TD(TD_3_P),   TD(TD_C_P),
-                                                                            KC_NO,                                  KC_NO,
-                                                                   XXXXXXX, _______, XXXXXXX,              _______, KC_ENT,  KC_NO
+        TD(TD_QTS),      BR_LCBR,         BR_LBRC,         BR_LPRN,         BR_EXLM,                               BR_GRV,  KC_7,         KC_8,         KC_9,         KC_MINS,
+        LGUI_T(BR_SLSH), LALT_T(BR_ASTR), LCTL_T(BR_MINS), LSFT_T(BR_PLUS), BR_EQL,                                BR_ACUT, RSFT_T(KC_4), RCTL_T(KC_5), RALT_T(KC_6), RGUI_T(KC_PLUS),
+        BR_BSLS,         BR_RCBR,         BR_RBRC,         BR_RPRN,         BR_AMPR,                               KC_0,    KC_1,         TD(TD_2_C),   TD(TD_3_P),   TD(TD_C_P),
+                                                                            KC_NO,                                 KC_NO,
+                                                          KC_BSPC, _______, XXXXXXX,                               KC_ENT, KC_NO,  KC_DEL
     ),
     [_FUNC] = LAYOUT(
-        KC_ESC,  KC_F1,   KC_F2,   KC_F3,   KC_F4,                                                       KC_F12,    KC_F7,    KC_F8,    KC_F9,    KC_INS, 
-        LGUI_T(XXXXXXX), LALT_T(KC_F5),   LCTL_T(KC_F6),   LSFT_T(KC_F7),   KC_F8,                       KC_F11, RSFT_T(KC_F4),    RCTL_T(KC_F5),    RALT_T(KC_F6), RGUI_T(XXXXXXX),      
-        KC_LSFT, KC_F9,   KC_F10,  KC_F11,  KC_F12,                                                      KC_F10, KC_F1,    KC_F2,    KC_F3, XXXXXXX,         
-                                            XXXXXXX,                                                     KC_NO,                                         
-                                   KC_LALT, XXXXXXX, XXXXXXX,                                   XXXXXXX, _______, KC_NO
+        _______, _______,   _______,  _______,  _______,                                                           KC_F12, KC_F7, KC_F8, KC_F9, KC_INS,
+        _______, _______,   _______,  _______,  _______,                                                           KC_F11, KC_F4, KC_F5, KC_F6, XXXXXXX,
+        _______, _______,   _______,  _______,  _______,                                                           KC_F10, KC_F1, KC_F2, KC_F3, XXXXXXX,
+                                                XXXXXXX,                                                           KC_NO,
+                              KC_LALT, XXXXXXX, XXXXXXX,                                                           KC_ENT, _______, _______
     ),
     [_NAV] = LAYOUT(
-        _______, _______, _______, _______, _______,                      BR_CIRC, BR_QUOT, BR_DQUO, BR_DLR, XXXXXXX,
-        _______, _______, _______, _______, _______,                      KC_LEFT, KC_DOWN, KC_UP, KC_RGHT, KC_NO,
-        _______, _______, _______, _______, _______,                      KC_HOME, KC_PGDN, KC_PGUP, KC_END, KC_NO,
-                                            XXXXXXX,                      XXXXXXX,
-                                   XXXXXXX, XXXXXXX, XXXXXXX,    XXXXXXX, XXXXXXX, XXXXXXX
+        _______, _______, _______, _______, _______,                                                               BR_CIRC, BR_QUOT, BR_DQUO, BR_DLR, XXXXXXX,
+        _______, _______, _______, _______, _______,                                                               KC_LEFT, KC_DOWN, KC_UP, KC_RGHT, KC_NO,
+        _______, _______, _______, _______, _______,                                                               KC_HOME, KC_PGDN, KC_PGUP, KC_END, KC_NO,
+                                            XXXXXXX,                                                               XXXXXXX,
+                          KC_BSPC, XXXXXXX, XXXXXXX,                                                               KC_ENT, XXXXXXX, KC_DEL
     ),
     [_MUS] = LAYOUT(
-        KC_LCTL, KC_BTN2, KC_BTN3, KC_BTN1, XXXXXXX,                      KC_WH_L, KC_WH_D, KC_WH_U, KC_WH_R, KC_ACL2,
-        KC_LALT, KC_BTN2, KC_BTN3, KC_BTN1, XXXXXXX,                      KC_MS_L,  KC_MS_D, KC_MS_U, KC_MS_R, KC_ACL1, 
-        KC_LSFT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      KC_WH_L, KC_WH_D, KC_WH_U, KC_WH_R, KC_ACL0, 
-                                            XXXXXXX,                      XXXXXXX,
-                                   XXXXXXX, XXXXXXX, XXXXXXX,    XXXXXXX, XXXXXXX, XXXXXXX
+        KC_LCTL, KC_BTN2, KC_BTN3, KC_BTN1, XXXXXXX,                                                               KC_WH_L, KC_WH_D, KC_WH_U, KC_WH_R, KC_ACL2,
+        KC_LALT, KC_BTN2, KC_BTN3, KC_BTN1, XXXXXXX,                                                               KC_MS_L,  KC_MS_D, KC_MS_U, KC_MS_R, KC_ACL1,
+        KC_LSFT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                                                               KC_WH_L, KC_WH_D, KC_WH_U, KC_WH_R, KC_ACL0,
+                                            XXXXXXX,                                                               XXXXXXX,
+                          KC_BSPC, XXXXXXX, XXXXXXX,                                                               KC_LGUI, XXXXXXX, KC_DEL
     ),
     [_ADJ] = LAYOUT(
-        RESET,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-        EEP_RST, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      RGB_MOD,  RGB_HUI, RGB_SAI, RGB_VAI, RGB_TOG,
-        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      RGB_RMOD, RGB_HUD, RGB_SAD, RGB_VAD, _______,
-                                            XXXXXXX,                      _______,
-                                   XXXXXXX, XXXXXXX, XXXXXXX,    XXXXXXX, XXXXXXX, XXXXXXX
+        RESET,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                                                               XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+        EEP_RST, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                                                               RGB_MOD,  RGB_HUI, RGB_SAI, RGB_VAI, RGB_TOG,
+        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                                                               RGB_RMOD, RGB_HUD, RGB_SAD, RGB_VAD, _______,
+                                            XXXXXXX,                                                               _______,
+                          XXXXXXX, XXXXXXX, XXXXXXX,                                                               XXXXXXX, XXXXXXX, XXXXXXX
     )
 };
 
