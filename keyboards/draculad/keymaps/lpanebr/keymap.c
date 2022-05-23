@@ -52,7 +52,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_BASE] =  LAYOUT(
         TD(TD_Q_ESC), KC_W,          KC_E,            KC_R,         KC_T,                                          KC_Y,  KC_U,          LT(0,KC_I),    KC_O,          KC_P,
         KC_A, LALT_T(KC_S),  LCTL_T(KC_D),    LSFT_T(KC_F), KC_G,                                                  KC_H,  RSFT_T(KC_J),  RCTL_T(KC_K),  RALT_T(KC_L),  BR_TILD,
-        LSFT_T(KC_Z), LT(0,KC_X),    TD(TD_C_CEDIL),  LT(0,KC_V),   KC_B,                                          KC_N,  KC_M,          KC_COMM,       KC_DOT,        LT(0,BR_SLSH),
+        LSFT_T(KC_Z), KC_X,  TD(TD_C_CEDIL),  LT(0,KC_V),   KC_B,                                                  KC_N,  KC_M,          KC_COMM,       KC_DOT,        LT(0,BR_SLSH),
                                                                     XXXXXXX,                                       XXXXXXX,
                         LT(_ADJ,KC_BSPC), LT(_NAV,KC_SPC), LT(_MUS,KC_TAB),                                        RGUI_T(KC_ENT), LT(_NUM,KC_SPC), LT(_FUNC,KC_DEL)
     ),
