@@ -83,14 +83,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______, KC_BTN2, KC_BTN3, KC_BTN1, _______,                                                               KC_HOME, KC_PGDN, KC_PGUP, KC_END,  _______,
                                             XXXXXXX,                                                               XXXXXXX,
                           _______, _______, _______,                                                               _______, _______, _______
-    ),
+    )/* ,
     [_ADJ] = LAYOUT(
-        RESET,   _______, _______, _______, _______,                                                               _______,  _______, _______, _______, _______,
-        EEP_RST, _______, _______, _______, _______,                                                               RGB_MOD,  RGB_HUI, RGB_SAI, RGB_VAI, RGB_TOG,
-        _______, _______, _______, _______, _______,                                                               RGB_M_R, RGB_M_SW, RGB_M_T, RGB_M_TW, _______,
+        RESET,   _______, _______,  _______, RGB_TOG,                                                              _______,  _______, _______, _______, KC_INS,
+        _______, RGB_MOD, RGB_HUI,  RGB_SAI, RGB_VAI,                                                              _______,  KC_LSFT, KC_LCTL, _______, KC_CAPS, 
+        EEP_RST, RGB_M_R, RGB_M_SW, RGB_M_T, RGB_M_TW,                                                             _______,  _______, _______, _______, _______, 
                                             XXXXXXX,                                                               XXXXXXX,
                           _______, _______, _______,                                                               _______, _______, _______
-    )
+    ) */
 };
 
 //LCTL_T(BR_MINS), LSFT_T(BR_PLUS) BR_SLSH
