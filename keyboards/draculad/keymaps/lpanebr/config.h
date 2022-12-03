@@ -1,6 +1,7 @@
 #pragma once
 #define SPLIT_USB_DETECT
-#define TAPPING_TERM 175
+// Lower Tapping term fixes my problem with quikly typing deadkeys
+#define TAPPING_TERM 125
 #define MK_COMBINED
 // #define RGBLIGHT_LAYERS
 
