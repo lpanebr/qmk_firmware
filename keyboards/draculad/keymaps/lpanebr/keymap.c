@@ -16,7 +16,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 #include QMK_KEYBOARD_H
-#include "keymap_br_abnt2.h"
+#include "keymap_brazilian_abnt2.h"
 
 
 // Tap Dance declarations
@@ -45,42 +45,50 @@ enum layer_number {
   _FUNC,
   _MUS,
   _NAV,
+  _ACCENTS,
   _ADJ
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_BASE] =  LAYOUT(
-        TD(TD_Q_ESC), KC_W,  KC_E,            KC_R,         KC_T,                                                  KC_Y,  KC_U,          LT(0,KC_I),    KC_O,          KC_P,
+        KC_Q, KC_W,  KC_E,            KC_R,         KC_T,                                                  KC_Y,  KC_U,          LT(0,KC_I),    KC_O,          KC_P,
         KC_A, LALT_T(KC_S),  LCTL_T(KC_D),    LSFT_T(KC_F), KC_G,                                                  KC_H,  RSFT_T(KC_J),  RCTL_T(KC_K),  RALT_T(KC_L),  BR_TILD,
-        LSFT_T(KC_Z), KC_X,  TD(TD_C_CEDIL),  LT(0,KC_V),   KC_B,                                                  KC_N,  KC_M,          KC_COMM,       KC_DOT,        LT(0,BR_SLSH),
+        KC_Z, KC_X,  KC_C,  KC_V,   KC_B,                                                  KC_N,  KC_M,          KC_COMM,       KC_DOT,        LT(0,BR_SLSH),
                                                          XXXXXXX,                                                  XXXXXXX,
-                       KC_LGUI, LT(_NAV,KC_SPC), LT(_MUS,KC_TAB),                                                  RGUI_T(KC_ENT), LT(_NUM,KC_SPC), LT(_FUNC,KC_APP)
+                       KC_LGUI, LT(_NAV,KC_SPC), LT(_MUS,KC_TAB),                                                  RGUI_T(KC_ENT), LT(_NUM,KC_SPC), MO(_FUNC)
     ),
     [_NUM] = LAYOUT(
-        TD(TD_QTS),      BR_LCBR,         BR_LBRC,         BR_LPRN,         BR_EXLM,                               BR_GRV,  KC_7,         KC_8,         KC_9,         KC_MINS,
-        LGUI_T(BR_SLSH), LALT_T(BR_ASTR), LCTL_T(BR_MINS), LSFT_T(BR_PLUS), BR_EQL,                                BR_ACUT, RSFT_T(KC_4), RCTL_T(KC_5), RALT_T(KC_6), RGUI_T(KC_PLUS),
+        KC_ESC,         BR_LCBR,         BR_LBRC,         BR_LPRN,         BR_EXLM,                               BR_GRV,  KC_7,         KC_8,         KC_9,         KC_MINS,
+        BR_SLSH, LALT_T(BR_ASTR), LCTL_T(BR_MINS), LSFT_T(BR_PLUS), BR_EQL,                                BR_ACUT, RSFT_T(KC_4), RCTL_T(KC_5), RALT_T(KC_6), RGUI_T(KC_PLUS),
         BR_BSLS,         BR_RCBR,         BR_RBRC,         BR_RPRN,         BR_AMPR,                               KC_0,    KC_1,         TD(TD_2_C),   TD(TD_3_P),   TD(TD_C_P),
                                                                             XXXXXXX,                               XXXXXXX,
-                                                          _______, _______, _______,                               _______, _______,  _______
+                                                          _______, MO(_ACCENTS), KC_ENT,                               _______, _______,  _______
+    ),
+    [_NAV] = LAYOUT(
+        KC_ESC,   C(S(KC_PGUP)), C(KC_PGUP), C(KC_PGDN), C(S(KC_PGDN)),                                            BR_CIRC, BR_QUOT, BR_DQUO, BR_DLR,  KC_BSPC,
+        _______,  KC_LALT,       KC_LCTL,    KC_LSFT,    _______,                                                  KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, _______,
+        _______,  KC_WH_L,       KC_WH_U,    KC_WH_D,    KC_WH_R,                                                  KC_HOME, KC_PGDN, KC_PGUP, KC_END,  _______,
+                                                         XXXXXXX,                                                  XXXXXXX,
+                                       _______, _______, _______,                                                  _______, MO(_ACCENTS), _______
     ),
     [_FUNC] = LAYOUT(
-        KC_F24, KC_F23, KC_F22, KC_F21, KC_PSTE,                                                                   KC_F12, KC_F7, KC_F8, KC_F9, KC_BSPC,
-        KC_F20, KC_F19, KC_F18, KC_F17, KC_COPY,                                                                   KC_F11, KC_F4, KC_F5, KC_F6, KC_APP,
-        KC_F16, KC_F15, KC_F14, KC_F13, _______,                                                                   KC_F10, KC_F1, KC_F2, KC_F3, KC_DEL,
-                                        XXXXXXX,                                                                   XXXXXXX,
-                      _______, _______, _______,                                                                   _______, _______, _______
+        KC_ESC,  _______, _______, _______, _______,                                                               KC_F12, KC_F7, KC_F8, KC_F9, KC_BSPC,
+        _______, _______, _______, _______, _______,                                                               KC_F11, KC_F4, KC_F5, KC_F6, KC_DEL,
+        _______, _______, _______, _______, _______,                                                               KC_F10, KC_F1, KC_F2, KC_F3, KC_APP,
+                                            XXXXXXX,                                                               XXXXXXX,
+                          _______, _______, KC_ENT,                                                                _______, _______, _______
     ),
     [_MUS] = LAYOUT(
-        _______, KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R,                                                               KC_WH_L, KC_WH_D, KC_WH_U, KC_WH_R, KC_ACL2,
+        KC_ESC,  KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R,                                                               KC_WH_L, KC_WH_D, KC_WH_U, KC_WH_R, KC_BSPC,
         KC_LALT, KC_BTN2, KC_BTN3, KC_BTN1, _______,                                                               KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, KC_ACL1,
         KC_LSFT, KC_WBAK, LCTL(LSFT(KC_TAB)), LCTL(KC_TAB), KC_WFWD,                                               KC_WH_L, KC_WH_D, KC_WH_U, KC_WH_R, KC_ACL0,
                                             XXXXXXX,                                                               XXXXXXX,
-                          _______, _______, _______,                                                               KC_LGUI, _______, _______
+                          _______, _______, _______,                                                               KC_ENT, _______, _______
     ),
-    [_NAV] = LAYOUT(
-        C(S(KC_PGUP)), KC_WH_U, KC_MS_U, KC_WH_D, C(KC_PGUP),                                                      BR_CIRC, BR_QUOT, BR_DQUO, BR_DLR,  _______,
-        C(S(KC_PGDN)), KC_MS_L, KC_MS_D, KC_MS_R, C(KC_PGDN),                                                      KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, _______,
-        _______, KC_BTN2, KC_BTN3, KC_BTN1, _______,                                                               KC_HOME, KC_PGDN, KC_PGUP, KC_END,  _______,
+    [_ACCENTS] = LAYOUT(
+        _______, _______, _______, _______, _______,                                                               XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX, KC_BSPC,
+        _______, _______, _______, _______, _______,                                                               XXXXXXX, KC_ENT, KC_DEL, KC_DEL, XXXXXXX,
+        _______, _______, BR_CCED, _______, _______,                                                               XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
                                             XXXXXXX,                                                               XXXXXXX,
                           _______, _______, _______,                                                               _______, _______, _______
     )/* ,
