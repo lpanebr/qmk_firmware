@@ -8,3 +8,5 @@
 // This only affects Mod Tap keys like I use for homerow mods.
 // Fixes my problem of getting ß and æ when I type ls and la quickly.
 #define IGNORE_MOD_TAP_INTERRUPT
+// Try fixing homerow and LT keys to allow slow typing.
+#define TAPPING_TERM_PER_KEY

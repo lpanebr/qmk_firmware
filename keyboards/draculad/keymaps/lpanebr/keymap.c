@@ -144,6 +144,32 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     return true;
 }
 
+uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
+  switch (keycode) {
+    case LT(0,KC_I):
+
+    // Left hand
+    case LSFT_T(KC_F):
+    case LCTL_T(KC_D):
+    case LALT_T(KC_S):
+
+    case LT(_NAV,KC_SPC):
+    case LT(_MUS,KC_TAB):
+
+    // Right hand
+    case RSFT_T(KC_J):
+    case RCTL_T(KC_K):
+    case RALT_T(KC_L):
+
+    case RGUI_T(KC_ENT):
+    case LT(_NUM,KC_SPC):
+    case MO(_FUNC):
+      return 300;
+    default:
+      return TAPPING_TERM;
+  }
+}
+
 /* 
 // Light LEDs 6 to 9 and 12 to 15 red when caps lock is active. Hard to ignore!
 const rgblight_segment_t PROGMEM my_capslock_layer[] = RGBLIGHT_LAYER_SEGMENTS(
