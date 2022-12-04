@@ -62,7 +62,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         BR_SLSH, LALT_T(BR_ASTR), LCTL_T(BR_MINS), LSFT_T(BR_PLUS), BR_EQL,                                BR_ACUT, RSFT_T(KC_4), RCTL_T(KC_5), RALT_T(KC_6), BR_PLUS,
         BR_BSLS,         BR_RCBR,         BR_RBRC,         BR_RPRN,         BR_AMPR,                               KC_0,    KC_1,         TD(TD_2_C),   TD(TD_3_P),   TD(TD_C_P),
                                                                             XXXXXXX,                               XXXXXXX,
-                                                          _______, MO(_ACCENTS), KC_ENT,                               _______, _______,  _______
+                                                          _______, LT(_ACCENTS, KC_SPC), KC_ENT,                               _______, _______,  _______
     ),
     [_NAV] = LAYOUT(
         KC_ESC,   C(S(KC_PGUP)), C(KC_PGUP), C(KC_PGDN), C(S(KC_PGDN)),                                            BR_CIRC, BR_QUOT, BR_DQUO, BR_DLR,  KC_BSPC,
