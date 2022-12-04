@@ -12,4 +12,4 @@
 #define TAPPING_TERM_PER_KEY
 // Try fixing lost ability to use modded deadkeys quikly.
 #define PERMISSIVE_HOLD
-
+#define BOTH_SHIFTS_TURNS_ON_CAPS_WORD
