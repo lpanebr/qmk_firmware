@@ -10,3 +10,6 @@
 #define IGNORE_MOD_TAP_INTERRUPT
 // Try fixing homerow and LT keys to allow slow typing.
 #define TAPPING_TERM_PER_KEY
+// Try fixing lost ability to use modded deadkeys quikly.
+#define PERMISSIVE_HOLD
+
